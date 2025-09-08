@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Login</title></head>
+<body>
+<div th:replace="fragments/layout :: content">
+    <div th:fragment="content">
+        <h2>Login</h2>
+        <form method="post" th:action="@{/login}">
+            <label>Email: <input type="text" name="username"/></label><br/>
+            <label>Password: <input type="password" name="password"/></label><br/>
+            <button type="submit">Login</button>
+        </form>
+        <p>No account? <a th:href="@{/register}">Register</a></p>
+    </div>
+</div>
+</body>
+</html>

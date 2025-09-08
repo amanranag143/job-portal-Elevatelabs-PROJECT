@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title} ?: 'Job Portal'">Job Portal</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/jobs}">Jobs</a>
+        <span sec:authorize="hasAuthority('EMPLOYER')">
+            | <a th:href="@{/jobs/new}">Post a Job</a>
+        </span>
+        <span sec:authorize="hasAuthority('APPLICANT')">
+            | <a th:href="@{/applications/my}">My Applications</a>
+        </span>
+        <span style="float:right">
+            <span sec:authorize="isAuthenticated()">
+                <span sec:authentication="name"></span> |
+                <a th:href="@{/logout}">Logout</a>
+            </span>
+            <span sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a> |
+                <a th:href="@{/register}">Register</a>
+            </span>
+        </span>
+    </nav>
+    <hr/>
+</header>
+<main>
+    <div th:replace="${content} :: content"></div>
+</main>
+<footer>
+    <hr/>
+    <small>&copy; Job Portal</small>
+</footer>
+</body>
+</html>

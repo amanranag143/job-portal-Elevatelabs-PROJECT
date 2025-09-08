@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head><meta charset="UTF-8"><title>Job Details</title></head>
+<body>
+<div th:replace="fragments/layout :: content">
+    <div th:fragment="content">
+        <h2 th:text="${job.title}">Job Title</h2>
+        <p><b>Company:</b> <span th:text="${job.company}"></span></p>
+        <p><b>Location:</b> <span th:text="${job.location}"></span></p>
+        <p th:text="${job.description}">Description here</p>
+        <div sec:authorize="hasAuthority('APPLICANT')">
+            <form th:action="@{|/applications/apply/${job.id}|}" method="post">
+                <textarea name="coverLetter" rows="4" cols="60" placeholder="Cover letter (optional)"></textarea><br/>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

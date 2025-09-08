@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 1rem; }
+nav a { margin-right: 10px; text-decoration: none; }
+button { padding: 6px 12px; }
+input, textarea, select { padding: 6px; margin: 4px 0; width: 100%; max-width: 500px; }
+ul { list-style: none; padding-left: 0; }
+li { padding: 8px 0; border-bottom: 1px solid #ddd; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; }
